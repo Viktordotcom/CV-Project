@@ -27,7 +27,7 @@ export default function PracticalInfo({ data, change, edit }) {
         <p>Skills</p>
         <textarea
           type="text"
-          name="tasks"
+          name="skills"
           value={practical.skills}
           onChange={change}
         />

@@ -9,7 +9,7 @@ export default function EducationalInfo({ data, change, edit }) {
         <p>University</p>
         <input
           type="text"
-          name="schoolName"
+          name="university"
           value={education.university}
           onChange={change}
         />
