@@ -27,15 +27,22 @@ class App extends Component {
     });
   }
 
-  handleEdit(id) {
-    // this.setState((prevState) => {
-    //   const newState = prevState.data.map((item) => {
-    //     return item.id === id ? { ...item, edit: !item.edit } : item;
-    //   });
-    //   console.log(newState);
-    //   return newState;
-    // });
+  componentDidMount() {
+    const localData = localStorage.getItem("localData");
 
+    if (localData) {
+      this.setState({ data: JSON.parse(localData) });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log("Component Did Update");
+    if (prevState.data !== this.state.data) {
+      localStorage.setItem("localData", JSON.stringify(this.state.data));
+    }
+  }
+
+  handleEdit(id) {
     this.setState({
       data: this.state.data.map((item) => {
         return item.id === id ? { ...item, edit: !item.edit } : item;
